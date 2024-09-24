@@ -1,18 +1,12 @@
 units:
   px: cx + 2
   py: cy + 2
-
-
   pushX: (cx / 2)
   pushY: (cy / 2)
-
   padX: pushX + 2
   padY: pushY + 2
-
   pad: 2
-
   spacing: 0.75
-
   controllerW: 18.5
   controllerH: 33.5
   belowControllerH: 17
@@ -24,24 +18,15 @@ points:
     matrix:
       columns:
         outer:
-          key.stagger: 0
           rows.bottom.skip: true
         pinky:
-          key.stagger: 0
         ring:
-          key.splay: -0
-          key.origin: [-12, -19]
           key.stagger: 9
         middle:
           key.stagger: 4
-          key.splay: -0
-          key.origin: [-12, -19]
         index:
           key.stagger: -10
-          key.splay: -0
-          key.origin: [-12, -19]
         inner:
-          key.stagger: 0
       rows:
         bottom:
         home:
@@ -122,6 +107,24 @@ pcbs:
     outlines:
       main:
         outline: board_left
+      keys:
+        outline: keys
+    footprints:
+      mx_hotswap:
+        what: mx
+        where: /^matrix_.*|^thumbfan_.*$/
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+        adjust:
+          rotate: 180
+  right:
+    outlines:
+      main:
+        outline: board_right
       keys:
         outline: keys
     footprints:

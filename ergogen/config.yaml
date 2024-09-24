@@ -23,34 +23,56 @@ points:
       columns:
         outer:
           rows.bottom.skip: true
+          key:
+            column_net: P020
         pinky:
+          key:
+            column_net: P022 
         ring:
-          key.stagger: 9
+          key:
+            stagger: 9
+            column_net: P024
         middle:
-          key.stagger: 4
+          key:
+            stagger: 4
+            column_net: P100
         index:
-          key.stagger: -10
+          key:
+            stagger: -10
+            column_net: P011
         inner:
+          key:
+            column_net: P017
       rows:
         bottom:
+          row_net: P002
         home:
+          row_net: P029
         top:
+          row_net: P031
     thumbfan:
       anchor:
         ref: matrix_inner_bottom
         shift: [-24, -20]
       columns:
         near:
+          key:
+            column_net: P100
         home:
-          key.spread: 21.25
-          key.splay: -12
-          key.origin: [-11.75, -9]
+          key:
+            spread: 21.25
+            splay: -12
+            origin: [-11.75, -9]
+            column_net: P011
         far:
-          key.spread: 21.25
-          key.splay: -12
-          key.origin: [-9.5, -9]
+          key:
+            spread: 21.25
+            splay: -12
+            origin: [-9.5, -9]
+            column_net: P017
       rows:
         thumb:
+          row_net: P155
   mirror:
     ref: matrix_pinky_home
     distance: 230
@@ -170,17 +192,17 @@ pcbs:
           reverse: false
           hotswap: true
           from: "{{column_net}}"
-          to: "{{colrow}}"
+          to: "{{row_net}}"
         adjust:
           rotate: 180
       nice_nano:
         what: ceoloide/mcu_nice_nano
         where:
           ref: matrix_inner_bottom
-          shift: [-9, -1.5]
-          rotate: -180.0
+          shift: [9, -1.5]
+          rotate: 0.0
       battery_switch:
-        what: ceoloide/switch_power
+        what: ceoloide/power_switch_smd_side
         where:
           ref: matrix_inner_bottom
           shift: [-8.8, -6.0]
@@ -190,7 +212,7 @@ pcbs:
           from: pos
           to: RAW
       horizontal_reset:
-        what: ceoloide/switch_reset
+        what: ceoloide/reset_switch_smd_side
         where:
           ref: matrix_inner_bottom
           shift: [9.0, 2.8]
@@ -200,41 +222,30 @@ pcbs:
           from: GND
           to: RST
       hole_bottom_right:
-        what: mountinghole
+        what: ceoloide/mounting_hole_plated
         where:
-          ref: matrix_fifth_mod
+          ref: matrix_pinky_bottom
           shift: [-pushX, pushY]
       hole_bottom_left:
-        what: mountinghole
+        what: ceoloide/mounting_hole_plated
         where:
-          ref: matrix_first_bottom
+          ref: matrix_inner_bottom
           shift: [pushX, -pushY]
       hole_top_left:
-        what: mountinghole
+        what: ceoloide/mounting_hole_plated
         where:
-          ref: matrix_second_num
+          ref: matrix_outer_top
           shift: [-pushX, -pushY]
       hole_top_right:
-        what: mountinghole
+        what: ceoloide/mounting_hole_plated
         where:
-          ref: matrix_fifth_top
+          ref: matrix_index_top
           shift: [-pushX, pushY]
       hole_center:
-        what: mountinghole
+        what: ceoloide/mounting_hole_plated
         where:
-          ref: matrix_fourth_bottom
+          ref: matrix_middle_bottom
           shift: [-pushX, pushY]
-      front_text:
-        what: ceoloide/utility_text
-        where:
-          ref: matrix_fourth_num
-          shift: [-8.7, 5.5]
-        params:
-          text: Caldera
-          justify: left
-          h_size: 3.0
-          v_size: 3.0
-          thickness: 0.4
 
   right:
     outlines:
@@ -251,16 +262,16 @@ pcbs:
           reverse: false
           hotswap: true
           from: "{{column_net}}"
-          to: "{{colrow}}"
+          to: "{{row_net}}"
         adjust:
           rotate: 180
       nice_nano:
         what: ceoloide/mcu_nice_nano
         where:
           ref: mirror_matrix_inner_bottom
-          shift: [-9, -1.5]
+          shift: [9, -1.5]
       battery_switch:
-        what: ceoloide/switch_power
+        what: ceoloide/power_switch_smd_side
         where:
           ref: mirror_matrix_inner_bottom
           shift: [-8.8, -6.0]
@@ -270,7 +281,7 @@ pcbs:
           from: pos
           to: RAW
       horizontal_reset:
-        what: ceoloide/switch_reset
+        what: ceoloide/reset_switch_smd_side
         where:
           ref: mirror_matrix_inner_bottom
           shift: [9.0, 2.8]
@@ -280,38 +291,27 @@ pcbs:
           from: GND
           to: RST
       hole_bottom_right:
-        what: mountinghole
+        what: ceoloide/mounting_hole_plated
         where:
-          ref: mirror_matrix_fifth_mod
+          ref: mirror_matrix_pinky_bottom
           shift: [-pushX, pushY]
       hole_bottom_left:
-        what: mountinghole
+        what: ceoloide/mounting_hole_plated
         where:
-          ref: mirror_matrix_first_bottom
+          ref: mirror_matrix_inner_bottom
           shift: [pushX, -pushY]
       hole_top_left:
-        what: mountinghole
+        what: ceoloide/mounting_hole_plated
         where:
-          ref: mirror_matrix_second_num
+          ref: mirror_matrix_outer_top
           shift: [-pushX, -pushY]
       hole_top_right:
-        what: mountinghole
+        what: ceoloide/mounting_hole_plated
         where:
-          ref: mirror_matrix_fifth_top
+          ref: mirror_matrix_index_top
           shift: [-pushX, pushY]
       hole_center:
-        what: mountinghole
+        what: ceoloide/mounting_hole_plated
         where:
-          ref: mirror_matrix_third_bottom
+          ref: mirror_matrix_middle_bottom
           shift: [pushX, pushY]
-      front_text:
-        what: ceoloide/utility_text
-        where:
-          ref: mirror_matrix_fourth_num
-          shift: [8.7, 5.5]
-        params:
-          text: Caldera
-          justify: left
-          h_size: 3.0
-          v_size: 3.0
-          thickness: 0.4

@@ -198,15 +198,15 @@ pcbs:
       nice_nano:
         what: ceoloide/mcu_nice_nano
         where:
-          ref: matrix_inner_bottom
-          shift: [9, -1.5]
-          rotate: 0.0
+          ref: matrix_inner_top
+          shift: [-7, -1.5]
+          rotate: -90
       battery_switch:
         what: ceoloide/power_switch_smd_side
         where:
-          ref: matrix_inner_bottom
-          shift: [-8.8, -6.0]
-          rotate: -90
+          ref: matrix_inner_home
+          shift: [8.5, 4.5]
+          rotate: 0
         params:
           side: B
           from: pos
@@ -214,8 +214,8 @@ pcbs:
       horizontal_reset:
         what: ceoloide/reset_switch_smd_side
         where:
-          ref: matrix_inner_bottom
-          shift: [9.0, 2.8]
+          ref: matrix_inner_home
+          shift: [8.0, -4.3]
           rotate: -90.0
         params:
           side: B
@@ -224,23 +224,23 @@ pcbs:
       hole_bottom_right:
         what: ceoloide/mounting_hole_plated
         where:
-          ref: matrix_pinky_bottom
+          ref: thumbfan_home_thumb
           shift: [-pushX, pushY]
       hole_bottom_left:
         what: ceoloide/mounting_hole_plated
         where:
-          ref: matrix_inner_bottom
-          shift: [pushX, -pushY]
+          ref: matrix_pinky_bottom
+          shift: [pushX, pushY]
       hole_top_left:
         what: ceoloide/mounting_hole_plated
         where:
-          ref: matrix_outer_top
+          ref: matrix_pinky_top
           shift: [-pushX, -pushY]
       hole_top_right:
         what: ceoloide/mounting_hole_plated
         where:
-          ref: matrix_index_top
-          shift: [-pushX, pushY]
+          ref: matrix_middle_top
+          shift: [pushX, -pushY]
       hole_center:
         what: ceoloide/mounting_hole_plated
         where:
@@ -290,28 +290,3 @@ pcbs:
           side: B
           from: GND
           to: RST
-      hole_bottom_right:
-        what: ceoloide/mounting_hole_plated
-        where:
-          ref: mirror_matrix_pinky_bottom
-          shift: [-pushX, pushY]
-      hole_bottom_left:
-        what: ceoloide/mounting_hole_plated
-        where:
-          ref: mirror_matrix_inner_bottom
-          shift: [pushX, -pushY]
-      hole_top_left:
-        what: ceoloide/mounting_hole_plated
-        where:
-          ref: mirror_matrix_outer_top
-          shift: [-pushX, -pushY]
-      hole_top_right:
-        what: ceoloide/mounting_hole_plated
-        where:
-          ref: mirror_matrix_index_top
-          shift: [-pushX, pushY]
-      hole_center:
-        what: ceoloide/mounting_hole_plated
-        where:
-          ref: mirror_matrix_middle_bottom
-          shift: [pushX, pushY]

@@ -1,10 +1,13 @@
 units:
   px: cx + 2
   py: cy + 2
+
   pushX: (cx / 2)
   pushY: (cy / 2)
+
   padX: pushX + 2
   padY: pushY + 2
+
   pad: 2
   spacing: 0.75
   controllerW: 18.5
@@ -13,6 +16,7 @@ units:
   caseBorder: 1.5
   screwThreadRadius: 0.5
   screwPCBRadius: 4.0
+
 points:
   zones:
     matrix:
@@ -50,12 +54,20 @@ points:
   mirror:
     ref: matrix_pinky_home
     distance: 230
+
 outlines:
-  keys:
-    - where: true
+  keys_left:
+    - where: /^matrix_|^thumbfan_/
       what: rectangle
       size: [cx + 4.5, cy + 5]
       fillet: 2
+
+  keys_right:
+    - where: /^mirror_matrix_|^mirror_thumbfan_/
+      what: rectangle
+      size: [cx + 4.5, cy + 5]
+      fillet: 2
+
   board_left:
     - what: polygon
       points:
@@ -79,6 +91,7 @@ outlines:
           shift: [-5.2, -9.7]
       operation: add
       fillet: 4
+
   board_right:
     - what: polygon
       points:
@@ -102,17 +115,56 @@ outlines:
           shift: [-5.2, -9.7]
       operation: add
       fillet: 4
+
+  xl_board_left:
+    - what: polygon
+      points:
+        - ref: matrix_index_bottom
+          shift: [-10.25 - caseBorder, 0 + caseBorder]
+        - ref: matrix_inner_bottom
+          shift: [10 + caseBorder, 0 + caseBorder]
+        - ref: thumbfan_home_thumb
+          shift: [10 + caseBorder, 10 + caseBorder]
+        - ref: thumbfan_far_thumb
+          shift: [-5 - caseBorder, 12 + caseBorder]
+        - ref: thumbfan_far_thumb
+          shift: [0, -9.6 - caseBorder]
+        - ref: thumbfan_home_thumb
+          shift: [10 + caseBorder, -9.7 - caseBorder]
+        - ref: thumbfan_home_thumb
+          shift: [0, -9.7 - caseBorder]
+        - ref: thumbfan_near_thumb
+          shift: [10 + caseBorder, -9.7 - caseBorder]
+        - ref: thumbfan_near_thumb
+          shift: [-5.2 - caseBorder, -9.7 - caseBorder]
+      operation: add
+
+  xl_board_key_cutouts:
+    - name: xl_board_left
+    - operation: subtract
+      name: keys_left
+
+cases:
+  switchplate:
+    - what: outline
+      name: xl_board_key_cutouts
+      extrude: 1.2
+  bottom:
+    - what: outline
+      name: xl_board_left
+      extrude: 1.2
+
 pcbs:
   left:
     outlines:
       main:
         outline: board_left
       keys:
-        outline: keys
+        outline: keys_left
     footprints:
       mx_hotswap:
         what: mx
-        where: /^matrix_.*|^thumbfan_.*$/
+        where: /^matrix_|^thumbfan_/
         params:
           keycaps: true
           reverse: false
@@ -121,16 +173,79 @@ pcbs:
           to: "{{colrow}}"
         adjust:
           rotate: 180
+      nice_nano:
+        what: ceoloide/mcu_nice_nano
+        where:
+          ref: matrix_inner_bottom
+          shift: [-9, -1.5]
+          rotate: -180.0
+      battery_switch:
+        what: ceoloide/switch_power
+        where:
+          ref: matrix_inner_bottom
+          shift: [-8.8, -6.0]
+          rotate: -90
+        params:
+          side: B
+          from: pos
+          to: RAW
+      horizontal_reset:
+        what: ceoloide/switch_reset
+        where:
+          ref: matrix_inner_bottom
+          shift: [9.0, 2.8]
+          rotate: -90.0
+        params:
+          side: B
+          from: GND
+          to: RST
+      hole_bottom_right:
+        what: mountinghole
+        where:
+          ref: matrix_fifth_mod
+          shift: [-pushX, pushY]
+      hole_bottom_left:
+        what: mountinghole
+        where:
+          ref: matrix_first_bottom
+          shift: [pushX, -pushY]
+      hole_top_left:
+        what: mountinghole
+        where:
+          ref: matrix_second_num
+          shift: [-pushX, -pushY]
+      hole_top_right:
+        what: mountinghole
+        where:
+          ref: matrix_fifth_top
+          shift: [-pushX, pushY]
+      hole_center:
+        what: mountinghole
+        where:
+          ref: matrix_fourth_bottom
+          shift: [-pushX, pushY]
+      front_text:
+        what: ceoloide/utility_text
+        where:
+          ref: matrix_fourth_num
+          shift: [-8.7, 5.5]
+        params:
+          text: Caldera
+          justify: left
+          h_size: 3.0
+          v_size: 3.0
+          thickness: 0.4
+
   right:
     outlines:
       main:
         outline: board_right
       keys:
-        outline: keys
+        outline: keys_right
     footprints:
       mx_hotswap:
         what: mx
-        where: /^matrix_.*|^thumbfan_.*$/
+        where: /^mirror_matrix_|^mirror_thumbfan_/
         params:
           keycaps: true
           reverse: false
@@ -139,3 +254,64 @@ pcbs:
           to: "{{colrow}}"
         adjust:
           rotate: 180
+      nice_nano:
+        what: ceoloide/mcu_nice_nano
+        where:
+          ref: mirror_matrix_inner_bottom
+          shift: [-9, -1.5]
+      battery_switch:
+        what: ceoloide/switch_power
+        where:
+          ref: mirror_matrix_inner_bottom
+          shift: [-8.8, -6.0]
+          rotate: -90
+        params:
+          side: B
+          from: pos
+          to: RAW
+      horizontal_reset:
+        what: ceoloide/switch_reset
+        where:
+          ref: mirror_matrix_inner_bottom
+          shift: [9.0, 2.8]
+          rotate: -90.0
+        params:
+          side: B
+          from: GND
+          to: RST
+      hole_bottom_right:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_fifth_mod
+          shift: [-pushX, pushY]
+      hole_bottom_left:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_first_bottom
+          shift: [pushX, -pushY]
+      hole_top_left:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_second_num
+          shift: [-pushX, -pushY]
+      hole_top_right:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_fifth_top
+          shift: [-pushX, pushY]
+      hole_center:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_third_bottom
+          shift: [pushX, pushY]
+      front_text:
+        what: ceoloide/utility_text
+        where:
+          ref: mirror_matrix_fourth_num
+          shift: [8.7, 5.5]
+        params:
+          text: Caldera
+          justify: left
+          h_size: 3.0
+          v_size: 3.0
+          thickness: 0.4

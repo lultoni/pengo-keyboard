@@ -1,0 +1,160 @@
+LT 1:
+(0) Shift
+(1) Alt__
+(2) WinKy
+(3) Space
+(4) Ctrl_
+(5) Enter
+(6) Tab__
+(7) BckSp
+----
+LT 2:
+(0) Shift
+(1) Alt__
+(2) WinKy
+(3) Space
+(4) Ctrl_
+(5) Enter
+(6) BckSp
+(7) Tab__
+----
+LT 3:
+(0) Shift
+(1) Alt__
+(2) WinKy
+(3) Space
+(4) Ctrl_
+(5) Tab__
+(6) Enter
+(7) BckSp
+----
+LT 4:
+(0) Shift
+(1) Alt__
+(2) WinKy
+(3) Space
+(4) Ctrl_
+(5) Tab__
+(6) BckSp
+(7) Enter
+----
+LT 5:
+(0) Shift
+(1) Alt__
+(2) WinKy
+(3) Space
+(4) Enter
+(5) Ctrl_
+(6) Tab__
+(7) BckSp
+----
+LT 6:
+(0) Shift
+(1) Alt__
+(2) WinKy
+(3) Space
+(4) Enter
+(5) Ctrl_
+(6) BckSp
+(7) Tab__
+----
+LT 7:
+(0) Shift
+(1) Alt__
+(2) WinKy
+(3) Space
+(4) Tab__
+(5) Ctrl_
+(6) Enter
+(7) BckSp
+----
+LT 8:
+(0) Shift
+(1) Alt__
+(2) WinKy
+(3) Space
+(4) Tab__
+(5) Ctrl_
+(6) BckSp
+(7) Enter
+----
+LT 9:
+(0) Alt__
+(1) Shift
+(2) WinKy
+(3) Space
+(4) Ctrl_
+(5) Enter
+(6) Tab__
+(7) BckSp
+----
+LT 10:
+(0) Alt__
+(1) Shift
+(2) WinKy
+(3) Space
+(4) Ctrl_
+(5) Enter
+(6) BckSp
+(7) Tab__
+----
+LT 11:
+(0) Alt__
+(1) Shift
+(2) WinKy
+(3) Space
+(4) Ctrl_
+(5) Tab__
+(6) Enter
+(7) BckSp
+----
+LT 12:
+(0) Alt__
+(1) Shift
+(2) WinKy
+(3) Space
+(4) Ctrl_
+(5) Tab__
+(6) BckSp
+(7) Enter
+----
+LT 13:
+(0) Alt__
+(1) Shift
+(2) WinKy
+(3) Space
+(4) Enter
+(5) Ctrl_
+(6) Tab__
+(7) BckSp
+----
+LT 14:
+(0) Alt__
+(1) Shift
+(2) WinKy
+(3) Space
+(4) Enter
+(5) Ctrl_
+(6) BckSp
+(7) Tab__
+----
+LT 15:
+(0) Alt__
+(1) Shift
+(2) WinKy
+(3) Space
+(4) Tab__
+(5) Ctrl_
+(6) Enter
+(7) BckSp
+----
+LT 16:
+(0) Alt__
+(1) Shift
+(2) WinKy
+(3) Space
+(4) Tab__
+(5) Ctrl_
+(6) BckSp
+(7) Enter
+----

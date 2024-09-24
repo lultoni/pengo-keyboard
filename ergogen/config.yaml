@@ -1,0 +1,138 @@
+units:
+  px: cx + 2
+  py: cy + 2
+
+
+  pushX: (cx / 2)
+  pushY: (cy / 2)
+
+  padX: pushX + 2
+  padY: pushY + 2
+
+  pad: 2
+
+  spacing: 0.75
+
+  controllerW: 18.5
+  controllerH: 33.5
+  belowControllerH: 17
+  caseBorder: 1.5
+  screwThreadRadius: 0.5
+  screwPCBRadius: 4.0
+points:
+  zones:
+    matrix:
+      columns:
+        outer:
+          key.stagger: 0
+          rows.bottom.skip: true
+        pinky:
+          key.stagger: 0
+        ring:
+          key.splay: -0
+          key.origin: [-12, -19]
+          key.stagger: 9
+        middle:
+          key.stagger: 4
+          key.splay: -0
+          key.origin: [-12, -19]
+        index:
+          key.stagger: -10
+          key.splay: -0
+          key.origin: [-12, -19]
+        inner:
+          key.stagger: 0
+      rows:
+        bottom:
+        home:
+        top:
+    thumbfan:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-24, -20]
+      columns:
+        near:
+        home:
+          key.spread: 21.25
+          key.splay: -12
+          key.origin: [-11.75, -9]
+        far:
+          key.spread: 21.25
+          key.splay: -12
+          key.origin: [-9.5, -9]
+      rows:
+        thumb:
+  mirror:
+    ref: matrix_pinky_home
+    distance: 230
+outlines:
+  keys:
+    - where: true
+      what: rectangle
+      size: [cx + 4.5, cy + 5]
+      fillet: 2
+  board_left:
+    - what: polygon
+      points:
+        - ref: matrix_index_bottom
+          shift: [-10.25, 0]
+        - ref: matrix_inner_bottom
+          shift: [10, 0]
+        - ref: thumbfan_home_thumb
+          shift: [10, 10]
+        - ref: thumbfan_far_thumb
+          shift: [-5, 12]
+        - ref: thumbfan_far_thumb
+          shift: [0, -9.6]
+        - ref: thumbfan_home_thumb
+          shift: [10, -9.7]
+        - ref: thumbfan_home_thumb
+          shift: [0, -9.7]
+        - ref: thumbfan_near_thumb
+          shift: [10, -9.7]
+        - ref: thumbfan_near_thumb
+          shift: [-5.2, -9.7]
+      operation: add
+      fillet: 4
+  board_right:
+    - what: polygon
+      points:
+        - ref: mirror_matrix_index_bottom
+          shift: [-10.25, 0]
+        - ref: mirror_matrix_inner_bottom
+          shift: [10, 0]
+        - ref: mirror_thumbfan_home_thumb
+          shift: [10, 10]
+        - ref: mirror_thumbfan_far_thumb
+          shift: [-5, 12]
+        - ref: mirror_thumbfan_far_thumb
+          shift: [0, -9.6]
+        - ref: mirror_thumbfan_home_thumb
+          shift: [10, -9.7]
+        - ref: mirror_thumbfan_home_thumb
+          shift: [0, -9.7]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [10, -9.7]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [-5.2, -9.7]
+      operation: add
+      fillet: 4
+pcbs:
+  left:
+    outlines:
+      main:
+        outline: board_left
+      keys:
+        outline: keys
+    footprints:
+      mx_hotswap:
+        what: mx
+        where: /^matrix_.*|^thumbfan_.*$/
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+        adjust:
+          rotate: 180

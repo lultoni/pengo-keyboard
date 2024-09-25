@@ -90,80 +90,30 @@ outlines:
       size: [cx + 4.5, cy + 5]
       fillet: 2
 
-  board_left:
-    - what: polygon
-      points:
-        - ref: matrix_index_bottom
-          shift: [-10.25, 0]
-        - ref: matrix_inner_bottom
-          shift: [10, 0]
-        - ref: thumbfan_home_thumb
-          shift: [10, 10]
-        - ref: thumbfan_far_thumb
-          shift: [-5, 12]
-        - ref: thumbfan_far_thumb
-          shift: [0, -9.6]
-        - ref: thumbfan_home_thumb
-          shift: [10, -9.7]
-        - ref: thumbfan_home_thumb
-          shift: [0, -9.7]
-        - ref: thumbfan_near_thumb
-          shift: [10, -9.7]
-        - ref: thumbfan_near_thumb
-          shift: [-5.2, -9.7]
-      operation: add
-      fillet: 4
-
-  board_right:
-    - what: polygon
-      points:
-        - ref: mirror_matrix_index_bottom
-          shift: [-10.25, 0]
-        - ref: mirror_matrix_inner_bottom
-          shift: [10, 0]
-        - ref: mirror_thumbfan_home_thumb
-          shift: [10, 10]
-        - ref: mirror_thumbfan_far_thumb
-          shift: [-5, 12]
-        - ref: mirror_thumbfan_far_thumb
-          shift: [0, -9.6]
-        - ref: mirror_thumbfan_home_thumb
-          shift: [10, -9.7]
-        - ref: mirror_thumbfan_home_thumb
-          shift: [0, -9.7]
-        - ref: mirror_thumbfan_near_thumb
-          shift: [10, -9.7]
-        - ref: mirror_thumbfan_near_thumb
-          shift: [-5.2, -9.7]
-      operation: add
-      fillet: 4
-
   full_left:
     - where: /^matrix_|^thumbfan_/
       what: rectangle
       size: [cx + 4.5, cy + 5]
     - what: polygon
       points:
-        - ref: matrix_index_bottom
+        - ref: matrix_index_bottom # tl
           shift: [-10.25, 0]
-        - ref: matrix_inner_bottom
-          shift: [10, 0]
-        - ref: thumbfan_home_thumb
-          shift: [10, 10]
-        - ref: thumbfan_far_thumb
-          shift: [-5, 12]
-        - ref: thumbfan_far_thumb
+        - ref: matrix_inner_bottom # tr
+          shift: [11.3, -11]
+        - ref: thumbfan_home_thumb # mrl
+          shift: [14, 11]
+        - ref: thumbfan_far_thumb # mrr
+          shift: [-5, 11]
+        - ref: thumbfan_far_thumb # brr
           shift: [0, -9.6]
-        - ref: thumbfan_home_thumb
+        - ref: thumbfan_home_thumb # brl
           shift: [10, -9.7]
-        - ref: thumbfan_home_thumb
-          shift: [0, -9.7]
-        - ref: thumbfan_near_thumb
+        - ref: thumbfan_near_thumb # blr
           shift: [10, -9.7]
-        - ref: thumbfan_near_thumb
+        - ref: thumbfan_near_thumb # bll
           shift: [-5.2, -9.7]
       operation: add
-      fillet: 4
+      fillet: 3
 
   full_right:
     - where: /^mirror_matrix_|^mirror_thumbfan_/
@@ -171,26 +121,24 @@ outlines:
       size: [cx + 4.5, cy + 5]
     - what: polygon
       points:
-        - ref: mirror_matrix_index_bottom
+        - ref: mirror_matrix_index_bottom # tl
           shift: [-10.25, 0]
-        - ref: mirror_matrix_inner_bottom
-          shift: [10, 0]
-        - ref: mirror_thumbfan_home_thumb
-          shift: [10, 10]
-        - ref: mirror_thumbfan_far_thumb
-          shift: [-5, 12]
-        - ref: mirror_thumbfan_far_thumb
+        - ref: mirror_matrix_inner_bottom # tr
+          shift: [11.3, -11]
+        - ref: mirror_thumbfan_home_thumb # mrl
+          shift: [14, 11]
+        - ref: mirror_thumbfan_far_thumb # mrr
+          shift: [-5, 11]
+        - ref: mirror_thumbfan_far_thumb # brr
           shift: [0, -9.6]
-        - ref: mirror_thumbfan_home_thumb
+        - ref: mirror_thumbfan_home_thumb # brl
           shift: [10, -9.7]
-        - ref: mirror_thumbfan_home_thumb
-          shift: [0, -9.7]
-        - ref: mirror_thumbfan_near_thumb
+        - ref: mirror_thumbfan_near_thumb # blr
           shift: [10, -9.7]
-        - ref: mirror_thumbfan_near_thumb
+        - ref: mirror_thumbfan_near_thumb # bll
           shift: [-5.2, -9.7]
       operation: add
-      fillet: 4
+      fillet: 3
 
   xl_board_left:
     - what: polygon
@@ -251,30 +199,30 @@ pcbs:
           rotate: 180
       # left nice nano
       nice_nano:
-        what: ceoloide/mcu_nice_nano
+        what: nice_nano
         params:
           orientation: up
         where:
           ref: matrix_inner_top
-          shift: [-7, -1.5]
-          rotate: -90
+          shift: [-8.5, -1.5]
+          rotate: -180
       # left power switch
       power_switch:
-        what: ceoloide/power_switch_smd_side
+        what: slider
         where:
           ref: matrix_inner_home
-          shift: [8.5, 4.5]
-          rotate: 0
+          shift: [8.5, 4.0]
+          rotate: -90
         params:
           side: B
           from: pos
           to: RAW
       # left reset button
       horizontal_reset:
-        what: ceoloide/reset_switch_smd_side
+        what: EVQPUC
         where:
           ref: matrix_inner_home
-          shift: [8.0, -4.3]
+          shift: [8.5, -8.5]
           rotate: -90.0
         params:
           side: B
@@ -282,107 +230,95 @@ pcbs:
           to: RST
       # left mounting holes
       hole_bottom_right:
-        what: ceoloide/mounting_hole_plated
+        what: mountinghole
         where:
           ref: thumbfan_home_thumb
           shift: [-pushX, pushY]
       hole_bottom_left:
-        what: ceoloide/mounting_hole_plated
+        what: mountinghole
         where:
           ref: matrix_pinky_bottom
-          shift: [pushX, pushY]
+          shift: [pushX, pushY + 2]
       hole_top_left:
-        what: ceoloide/mounting_hole_plated
+        what: mountinghole
         where:
           ref: matrix_pinky_top
           shift: [-pushX, -pushY]
       hole_top_right:
-        what: ceoloide/mounting_hole_plated
+        what: mountinghole
         where:
           ref: matrix_middle_top
           shift: [pushX, -pushY]
       hole_center:
-        what: ceoloide/mounting_hole_plated
+        what: mountinghole
         where:
           ref: matrix_middle_bottom
           shift: [-pushX, pushY]
       # left battery connection
-      # left diodes
-
-  right:
-    # right edge cuts
-    outlines:
-      main:
-        outline: full_right
-    footprints:
-      # right switch hotswaps
-      mx_hotswap:
-        what: mx
-        where: /^mirror_matrix_|^mirror_thumbfan_/
+      battery_jack:
+        what: jstph
+        where:
+          ref: matrix_middle_home
+          shift: [-7, 5.5]
+          rotate: 90
         params:
-          keycaps: true
-          reverse: false
-          hotswap: true
-          from: "{{column_net}}"
+            side: B
+            pos: pos
+            neg: GND
+      # left diodes
+      # this is all the ones that work like they should
+      diode_main:
+        what: diode
+        where: /^matrix_(?!(?:pinky_top|ring_bottom|middle_home|index_top|inner_top))|^thumbfan_/
+        params:
+          from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
+          shift: [-8.2, -3.5]
+          rotate: 90
+      # the non correct positioned diodes
+      diode_pinky_top:
+        what: diode
+        where: matrix_pinky_top
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [-8, -0.5]
+          rotate: 90
+      diode_ring_bottom:
+        what: diode
+        where: matrix_ring_bottom
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [-8, -6]
+          rotate: 90
+      diode_middle_home:
+        what: diode
+        where: matrix_middle_home
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [-8.2, -3.5]
           rotate: 180
-      # right nice nano
-      nice_nano:
-        what: ceoloide/mcu_nice_nano
+      diode_index_top:
+        what: diode
+        where: matrix_index_top
         params:
-          orientation: up
-        where:
-          ref: mirror_matrix_inner_top
-          shift: [-7, -1.5]
-          rotate: -90
-      # right power switch
-      power_switch:
-        what: ceoloide/power_switch_smd_side
-        where:
-          ref: mirror_matrix_inner_home
-          shift: [8.5, 4.5]
-          rotate: 0
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [-8.2, -3.5]
+          rotate: 180
+      diode_inner_top:
+        what: diode
+        where: matrix_inner_top
         params:
-          side: B
-          from: pos
-          to: RAW
-      # right reset button
-      horizontal_reset:
-        what: ceoloide/reset_switch_smd_side
-        where:
-          ref: mirror_matrix_inner_home
-          shift: [8.0, -4.3]
-          rotate: 90.0
-        params:
-          side: B
-          from: GND
-          to: RST
-      # right mounting holes
-      hole_bottom_right:
-        what: ceoloide/mounting_hole_plated
-        where:
-          ref: mirror_thumbfan_home_thumb
-          shift: [-pushX, pushY]
-      hole_bottom_left:
-        what: ceoloide/mounting_hole_plated
-        where:
-          ref: mirror_matrix_pinky_bottom
-          shift: [pushX, pushY]
-      hole_top_left:
-        what: ceoloide/mounting_hole_plated
-        where:
-          ref: mirror_matrix_pinky_top
-          shift: [-pushX, -pushY]
-      hole_top_right:
-        what: ceoloide/mounting_hole_plated
-        where:
-          ref: mirror_matrix_middle_top
-          shift: [pushX, -pushY]
-      hole_center:
-        what: ceoloide/mounting_hole_plated
-        where:
-          ref: mirror_matrix_middle_bottom
-          shift: [-pushX, pushY]
-      # right battery connection
-      # right diodes
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [-8.2, -3.5]
+          rotate: 180

@@ -348,8 +348,8 @@ pcbs:
           keycaps: true
           reverse: false
           hotswap: true
-          from: "{{colrow}}"
-          to: "{{row_net}}"
+          from: "{{column_net}}"
+          to: "{{colrow}}"
         adjust:
           rotate: -180
       # right nice nano
@@ -429,7 +429,7 @@ pcbs:
           to: "{{row_net}}"
         adjust:
           shift: [8.2, -3.5]
-          rotate: 90
+          rotate: 270
       # the non correct positioned diodes
       diode_inner_top:
         what: diode
@@ -439,7 +439,7 @@ pcbs:
           to: "{{row_net}}"
         adjust:
           shift: [-10, -1.5]
-          rotate: 90
+          rotate: 270
       diode_inner_home:
         what: diode
         where: mirror_matrix_inner_home
@@ -457,7 +457,7 @@ pcbs:
           to: "{{row_net}}"
         adjust:
           shift: [-6.8, -9.5]
-          rotate: 90
+          rotate: 270
       diode_middle_top:
         what: diode
         where: mirror_matrix_middle_top

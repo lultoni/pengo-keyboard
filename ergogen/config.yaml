@@ -72,7 +72,7 @@ points:
             column_net: P017
       rows:
         thumb:
-          row_net: P155
+          row_net: P115
   mirror:
     ref: matrix_pinky_home
     distance: 230
@@ -232,8 +232,8 @@ pcbs:
       hole_bottom_right:
         what: mountinghole
         where:
-          ref: thumbfan_home_thumb
-          shift: [-pushX, pushY]
+          ref: thumbfan_far_thumb
+          shift: [-pushX - 2, pushY - 2]
       hole_bottom_left:
         what: mountinghole
         where:
@@ -386,8 +386,8 @@ pcbs:
       hole_bottom_right:
         what: mountinghole
         where:
-          ref: mirror_thumbfan_home_thumb
-          shift: [-pushX, pushY]
+          ref: mirror_thumbfan_far_thumb
+          shift: [-pushX - 2, pushY - 2]
       hole_bottom_left:
         what: mountinghole
         where:

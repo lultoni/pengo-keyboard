@@ -138,6 +138,60 @@ outlines:
       operation: add
       fillet: 4
 
+  full_left:
+    - where: /^matrix_|^thumbfan_/
+      what: rectangle
+      size: [cx + 4.5, cy + 5]
+    - what: polygon
+      points:
+        - ref: matrix_index_bottom
+          shift: [-10.25, 0]
+        - ref: matrix_inner_bottom
+          shift: [10, 0]
+        - ref: thumbfan_home_thumb
+          shift: [10, 10]
+        - ref: thumbfan_far_thumb
+          shift: [-5, 12]
+        - ref: thumbfan_far_thumb
+          shift: [0, -9.6]
+        - ref: thumbfan_home_thumb
+          shift: [10, -9.7]
+        - ref: thumbfan_home_thumb
+          shift: [0, -9.7]
+        - ref: thumbfan_near_thumb
+          shift: [10, -9.7]
+        - ref: thumbfan_near_thumb
+          shift: [-5.2, -9.7]
+      operation: add
+      fillet: 4
+
+  full_right:
+    - where: /^mirror_matrix_|^mirror_thumbfan_/
+      what: rectangle
+      size: [cx + 4.5, cy + 5]
+    - what: polygon
+      points:
+        - ref: mirror_matrix_index_bottom
+          shift: [-10.25, 0]
+        - ref: mirror_matrix_inner_bottom
+          shift: [10, 0]
+        - ref: mirror_thumbfan_home_thumb
+          shift: [10, 10]
+        - ref: mirror_thumbfan_far_thumb
+          shift: [-5, 12]
+        - ref: mirror_thumbfan_far_thumb
+          shift: [0, -9.6]
+        - ref: mirror_thumbfan_home_thumb
+          shift: [10, -9.7]
+        - ref: mirror_thumbfan_home_thumb
+          shift: [0, -9.7]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [10, -9.7]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [-5.2, -9.7]
+      operation: add
+      fillet: 4
+
   xl_board_left:
     - what: polygon
       points:
@@ -178,12 +232,12 @@ cases:
 
 pcbs:
   left:
+    # left edge cuts
     outlines:
       main:
-        outline: board_left
-      keys:
-        outline: keys_left
+        outline: full_left
     footprints:
+      # left switch hotswaps
       mx_hotswap:
         what: mx
         where: /^matrix_|^thumbfan_/
@@ -195,13 +249,17 @@ pcbs:
           to: "{{row_net}}"
         adjust:
           rotate: 180
+      # left nice nano
       nice_nano:
         what: ceoloide/mcu_nice_nano
+        params:
+          orientation: up
         where:
           ref: matrix_inner_top
           shift: [-7, -1.5]
           rotate: -90
-      battery_switch:
+      # left power switch
+      power_switch:
         what: ceoloide/power_switch_smd_side
         where:
           ref: matrix_inner_home
@@ -211,6 +269,7 @@ pcbs:
           side: B
           from: pos
           to: RAW
+      # left reset button
       horizontal_reset:
         what: ceoloide/reset_switch_smd_side
         where:
@@ -221,6 +280,7 @@ pcbs:
           side: B
           from: GND
           to: RST
+      # left mounting holes
       hole_bottom_right:
         what: ceoloide/mounting_hole_plated
         where:
@@ -246,14 +306,16 @@ pcbs:
         where:
           ref: matrix_middle_bottom
           shift: [-pushX, pushY]
+      # left battery connection
+      # left diodes
 
   right:
+    # right edge cuts
     outlines:
       main:
-        outline: board_right
-      keys:
-        outline: keys_right
+        outline: full_right
     footprints:
+      # right switch hotswaps
       mx_hotswap:
         what: mx
         where: /^mirror_matrix_|^mirror_thumbfan_/
@@ -265,28 +327,62 @@ pcbs:
           to: "{{row_net}}"
         adjust:
           rotate: 180
+      # right nice nano
       nice_nano:
         what: ceoloide/mcu_nice_nano
+        params:
+          orientation: up
         where:
-          ref: mirror_matrix_inner_bottom
-          shift: [9, -1.5]
-      battery_switch:
+          ref: mirror_matrix_inner_top
+          shift: [-7, -1.5]
+          rotate: -90
+      # right power switch
+      power_switch:
         what: ceoloide/power_switch_smd_side
         where:
-          ref: mirror_matrix_inner_bottom
-          shift: [-8.8, -6.0]
-          rotate: -90
+          ref: mirror_matrix_inner_home
+          shift: [8.5, 4.5]
+          rotate: 0
         params:
           side: B
           from: pos
           to: RAW
+      # right reset button
       horizontal_reset:
         what: ceoloide/reset_switch_smd_side
         where:
-          ref: mirror_matrix_inner_bottom
-          shift: [9.0, 2.8]
-          rotate: -90.0
+          ref: mirror_matrix_inner_home
+          shift: [8.0, -4.3]
+          rotate: 90.0
         params:
           side: B
           from: GND
           to: RST
+      # right mounting holes
+      hole_bottom_right:
+        what: ceoloide/mounting_hole_plated
+        where:
+          ref: mirror_thumbfan_home_thumb
+          shift: [-pushX, pushY]
+      hole_bottom_left:
+        what: ceoloide/mounting_hole_plated
+        where:
+          ref: mirror_matrix_pinky_bottom
+          shift: [pushX, pushY]
+      hole_top_left:
+        what: ceoloide/mounting_hole_plated
+        where:
+          ref: mirror_matrix_pinky_top
+          shift: [-pushX, -pushY]
+      hole_top_right:
+        what: ceoloide/mounting_hole_plated
+        where:
+          ref: mirror_matrix_middle_top
+          shift: [pushX, -pushY]
+      hole_center:
+        what: ceoloide/mounting_hole_plated
+        where:
+          ref: mirror_matrix_middle_bottom
+          shift: [-pushX, pushY]
+      # right battery connection
+      # right diodes

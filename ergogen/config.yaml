@@ -24,32 +24,32 @@ points:
         outer:
           rows.bottom.skip: true
           key:
-            column_net: P020
+            column_net: P020 # top of nn
         pinky:
           key:
-            column_net: P022 
+            column_net: P022 # top of nn
         ring:
           key:
             stagger: 9
-            column_net: P024
+            column_net: P024 # top of nn
         middle:
           key:
             stagger: 4
-            column_net: P100
+            column_net: P100 # top of nn
         index:
           key:
             stagger: -10
-            column_net: P011
+            column_net: P011 # top of nn
         inner:
           key:
-            column_net: P017
+            column_net: P017 # top of nn
       rows:
         bottom:
-          row_net: P002
+          row_net: P002 # bottom of nn
         home:
-          row_net: P029
+          row_net: P029 # bottom of nn
         top:
-          row_net: P031
+          row_net: P031 # bottom of nn
     thumbfan:
       anchor:
         ref: matrix_inner_bottom
@@ -57,22 +57,22 @@ points:
       columns:
         near:
           key:
-            column_net: P100
+            column_net: P100 # top of nn
         home:
           key:
             spread: 21.25
             splay: -12
             origin: [-11.75, -9]
-            column_net: P011
+            column_net: P011 # top of nn
         far:
           key:
             spread: 21.25
             splay: -12
             origin: [-9.5, -9]
-            column_net: P017
+            column_net: P017 # top of nn
       rows:
         thumb:
-          row_net: P115
+          row_net: P115 # bottom of nn
   mirror:
     ref: matrix_pinky_home
     distance: 230
@@ -194,7 +194,7 @@ pcbs:
           reverse: false
           hotswap: true
           from: "{{column_net}}"
-          to: "{{row_net}}"
+          to: "{{colrow}}"
         adjust:
           rotate: 180
       # left nice nano
@@ -348,7 +348,7 @@ pcbs:
           keycaps: true
           reverse: false
           hotswap: true
-          from: "{{column_net}}"
+          from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
           rotate: -180

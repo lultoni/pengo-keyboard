@@ -302,8 +302,8 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [-8.2, -3.5]
-          rotate: 180
+          shift: [-8.2, -3]
+          rotate: 90
       diode_index_top:
         what: diode
         where: matrix_index_top
@@ -311,8 +311,8 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [-8.2, -3.5]
-          rotate: 180
+          shift: [-8.2, -5.5]
+          rotate: 90
       diode_inner_top:
         what: diode
         where: matrix_inner_top
@@ -320,5 +320,189 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [-8.2, -3.5]
+          shift: [-8.2, -1.5]
+          rotate: 90
+      # write "pengo" on the 
+      front_text: &text
+        what: text
+        where: &textWhere
+            ref: matrix_middle_top
+            shift: [-6.7, 5.5]
+        params: &textParams
+            text: pengo
+            justify: left
+            h_size: 3.0
+            v_size: 3.0
+            thickness: 0.4
+  right:
+    # right edge cuts
+    outlines:
+      main:
+        outline: full_right
+    footprints:
+      # right switch hotswaps
+      mx_hotswap:
+        what: mx
+        where: /^mirror_matrix_|^mirror_thumbfan_/
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{row_net}}"
+        adjust:
+          rotate: -180
+      # right nice nano
+      nice_nano:
+        what: nice_nano
+        params:
+          orientation: up
+        where:
+          ref: mirror_matrix_inner_top
+          shift: [-8.5, -1.5]
+      # right power switch
+      power_switch:
+        what: slider
+        where:
+          ref: mirror_matrix_inner_home
+          shift: [8.5, 4.0]
+          rotate: -90
+        params:
+          side: B
+          from: pos
+          to: RAW
+      # right reset button
+      horizontal_reset:
+        what: EVQPUC
+        where:
+          ref: mirror_matrix_inner_home
+          shift: [8.5, -8.5]
+          rotate: -90.0
+        params:
+          side: B
+          from: GND
+          to: RST
+      # right mounting holes
+      hole_bottom_right:
+        what: mountinghole
+        where:
+          ref: mirror_thumbfan_home_thumb
+          shift: [-pushX, pushY]
+      hole_bottom_left:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_pinky_bottom
+          shift: [pushX, pushY + 2]
+      hole_top_left:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_pinky_top
+          shift: [-pushX, -pushY]
+      hole_top_right:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_middle_top
+          shift: [pushX, -pushY]
+      hole_center:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_middle_bottom
+          shift: [-pushX, pushY]
+      # right battery connection
+      battery_jack:
+        what: jstph
+        where:
+          ref: mirror_matrix_middle_home
+          shift: [-7, 5.5]
+          rotate: 90
+        params:
+            side: B
+            pos: pos
+            neg: GND
+      # right diodes
+      # this is all the ones that work like they should
+      diode_main:
+        what: diode
+        where: /^mirror_matrix_(?!(?:inner_top|inner_home|index_top|middle_top|ring_home|pinky_home|outer_top))|^mirror_thumbfan_/
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [8.2, -3.5]
+          rotate: 90
+      # the non correct positioned diodes
+      diode_inner_top:
+        what: diode
+        where: mirror_matrix_inner_top
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [-10, -1.5]
+          rotate: 90
+      diode_inner_home:
+        what: diode
+        where: mirror_matrix_inner_home
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [-3, -8.5]
           rotate: 180
+      diode_index_top:
+        what: diode
+        where: mirror_matrix_index_top
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [-6.8, -9.5]
+          rotate: 90
+      diode_middle_top:
+        what: diode
+        where: mirror_matrix_middle_top
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [-3, -8.5]
+          rotate: 180
+      diode_ring_home:
+        what: diode
+        where: mirror_matrix_ring_home
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [-3, -8.5]
+          rotate: 180
+      diode_pinky_home:
+        what: diode
+        where: mirror_matrix_pinky_home
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [-3, -8.5]
+          rotate: 180
+      diode_outer_top:
+        what: diode
+        where: mirror_matrix_outer_top
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [-3, -8.5]
+          rotate: 180
+      # write "pengo" on the 
+      front_text: &text
+        what: text
+        where: &textWhere
+            ref: mirror_matrix_middle_top
+            shift: [6.7, 5.5]
+        params: &textParams
+            text: pengo
+            justify: left
+            h_size: 3.0
+            v_size: 3.0
+            thickness: 0.4

@@ -141,42 +141,63 @@ outlines:
       fillet: 3
 
   xl_board_left:
-    - what: polygon
-      points:
-        - ref: matrix_index_bottom
-          shift: [-10.25 - caseBorder, 0 + caseBorder]
-        - ref: matrix_inner_bottom
-          shift: [10 + caseBorder, 0 + caseBorder]
-        - ref: thumbfan_home_thumb
-          shift: [10 + caseBorder, 10 + caseBorder]
-        - ref: thumbfan_far_thumb
-          shift: [-5 - caseBorder, 12 + caseBorder]
-        - ref: thumbfan_far_thumb
-          shift: [0, -9.6 - caseBorder]
-        - ref: thumbfan_home_thumb
-          shift: [10 + caseBorder, -9.7 - caseBorder]
-        - ref: thumbfan_home_thumb
-          shift: [0, -9.7 - caseBorder]
-        - ref: thumbfan_near_thumb
-          shift: [10 + caseBorder, -9.7 - caseBorder]
-        - ref: thumbfan_near_thumb
-          shift: [-5.2 - caseBorder, -9.7 - caseBorder]
-      operation: add
+    - where: /^matrix_|^thumbfan_/
+      what: rectangle
+      size: [cx + 8.5, cy + 9]
+      fillet: 3
 
-  xl_board_key_cutouts:
+  xl_board_right:
+    - where: /^mirror_matrix_|^mirror_thumbfan_/
+      what: rectangle
+      size: [cx + 8.5, cy + 9]
+      fillet: 3
+
+  key_cut_left:
+    - where: /^matrix_|^thumbfan_/
+      what: rectangle
+      size: [14, 14]
+      fillet: 1
+
+  key_cut_right:
+    - where: /^mirror_matrix_|^mirror_thumbfan_/
+      what: rectangle
+      size: [14, 14]
+      fillet: 1
+
+  case_outline_left:
     - name: xl_board_left
     - operation: subtract
-      name: keys_left
+      name: key_cut_left
+
+  case_outline_right:
+    - name: xl_board_right
+    - operation: subtract
+      name: key_cut_right
 
 cases:
   switchplate:
     - what: outline
-      name: xl_board_key_cutouts
+      name: case_outline_left
       extrude: 1.2
+
   bottom:
     - what: outline
       name: xl_board_left
       extrude: 1.2
+
+  case_with_sides:
+    - what: outline
+      name: full_left
+      extrude: 2
+    - what: outline
+      name: case_outline_left
+      extrude: 1.2
+      operation: subtract
+
+  backside:
+    - what: outline
+      name: full_left
+      extrude: 2
 
 pcbs:
   left:

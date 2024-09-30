@@ -1,3 +1,9 @@
+function full_left_extrude_2_outline_fn(){
+    return new CSG.Path2D([[-8.25,8],[4.75,8]]).appendArc([7.75,5],{"radius":3,"clockwise":true,"large":false}).appendPoint([7.75,-8]).appendArc([10.75,-11],{"radius":3,"clockwise":false,"large":false}).appendPoint([27.25,-11]).appendArc([30.25,-8],{"radius":3,"clockwise":false,"large":false}).appendPoint([30.25,-5]).appendArc([33.25,-2],{"radius":3,"clockwise":true,"large":false}).appendPoint([46.25,-2]).appendArc([49.25,1],{"radius":3,"clockwise":false,"large":false}).appendPoint([49.25,2]).appendPoint([61.75,2]).appendArc([64.75,-1],{"radius":3,"clockwise":true,"large":false}).appendPoint([64.75,-3]).appendArc([61.75,-6],{"radius":3,"clockwise":true,"large":false}).appendPoint([59.75,-6]).appendPoint([59.75,-25]).appendArc([62.75,-28],{"radius":3,"clockwise":false,"large":false}).appendPoint([80.5860572,-28]).appendPoint([80.5732504,-28.0602511]).appendPoint([102.5815714,-32.7382641]).appendPoint([102.5943782,-32.678013]).appendPoint([118.8884273,-39.9325911]).appendArc([122.8492735,-38.4121645],{"radius":3,"clockwise":false,"large":false}).appendPoint([129.3570598,-23.7954371]).appendArc([127.8366332,-19.834591],{"radius":3,"clockwise":false,"large":false}).appendPoint([115.7386763,-14.4482335]).appendArc([115.7256379,-14.4423912],{"radius":3,"clockwise":true,"large":false}).appendPoint([110.3930357,-12.0376683]).appendArc([109.4352754,-11.352138],{"radius":3,"clockwise":true,"large":false}).appendPoint([106.3,-8]).appendPoint([106.25,-7.9864365]).appendPoint([106.25,49]).appendArc([103.25,52],{"radius":3,"clockwise":false,"large":false}).appendPoint([71.25,52]).appendArc([68.25,55],{"radius":3,"clockwise":true,"large":false}).appendPoint([68.25,59]).appendArc([65.25,62],{"radius":3,"clockwise":false,"large":false}).appendPoint([48.75,62]).appendArc([45.75,59],{"radius":3,"clockwise":false,"large":false}).appendPoint([45.75,58]).appendPoint([29.75,58]).appendArc([26.75,55],{"radius":3,"clockwise":false,"large":false}).appendPoint([26.75,52]).appendArc([23.75,49],{"radius":3,"clockwise":true,"large":false}).appendPoint([-8.25,49]).appendArc([-11.25,46],{"radius":3,"clockwise":false,"large":false}).appendPoint([-11.25,11]).appendArc([-8.25,8],{"radius":3,"clockwise":false,"large":false}).close().innerToCAG()
+.extrude({ offset: [0, 0, 2] });
+}
+
+
 function case_outline_left_extrude_1_2_outline_fn(){
     return new CSG.Path2D([[-10.25,6],[2.75,6]]).appendArc([5.75,3],{"radius":3,"clockwise":true,"large":false}).appendPoint([5.75,-10]).appendArc([8.75,-13],{"radius":3,"clockwise":false,"large":false}).appendPoint([29.25,-13]).appendArc([32.25,-10],{"radius":3,"clockwise":false,"large":false}).appendPoint([32.25,-7]).appendArc([35.25,-4],{"radius":3,"clockwise":true,"large":false}).appendPoint([48.25,-4]).appendArc([51.25,-1],{"radius":3,"clockwise":false,"large":false}).appendPoint([51.25,0]).appendPoint([59.75,0]).appendArc([62.75,-3],{"radius":3,"clockwise":true,"large":false}).appendPoint([62.75,-4]).appendPoint([60.75,-4]).appendArc([57.75,-7],{"radius":3,"clockwise":false,"large":false}).appendPoint([57.75,-27]).appendArc([60.75,-30],{"radius":3,"clockwise":false,"large":false}).appendPoint([79.7642701,-30]).appendArc([80.3880052,-30.0655572],{"radius":3,"clockwise":true,"large":false}).appendPoint([101.9351699,-34.6455484]).appendArc([102.5316446,-34.8393548],{"radius":3,"clockwise":true,"large":false}).appendPoint([119.902045,-42.5731553]).appendArc([123.8628911,-41.0527287],{"radius":3,"clockwise":false,"large":false}).appendPoint([131.997624,-22.7818195]).appendArc([130.4771974,-18.8209733],{"radius":3,"clockwise":false,"large":false}).appendPoint([109.0088792,-9.2626622]).appendPoint([108.8845829,-9.5418363]).appendPoint([108.25,-9.4069515]).appendPoint([108.25,51]).appendArc([105.25,54],{"radius":3,"clockwise":false,"large":false}).appendPoint([73.25,54]).appendArc([70.25,57],{"radius":3,"clockwise":true,"large":false}).appendPoint([70.25,61]).appendArc([67.25,64],{"radius":3,"clockwise":false,"large":false}).appendPoint([46.75,64]).appendArc([43.75,61],{"radius":3,"clockwise":false,"large":false}).appendPoint([43.75,60]).appendPoint([27.75,60]).appendArc([24.75,57],{"radius":3,"clockwise":false,"large":false}).appendPoint([24.75,54]).appendArc([21.75,51],{"radius":3,"clockwise":true,"large":false}).appendPoint([-10.25,51]).appendArc([-13.25,48],{"radius":3,"clockwise":false,"large":false}).appendPoint([-13.25,9]).appendArc([-10.25,6],{"radius":3,"clockwise":false,"large":false}).close().innerToCAG()
 .subtract(
@@ -46,22 +52,38 @@ function case_outline_left_extrude_1_2_outline_fn(){
 
 
 
-                function switchplate_case_fn() {
+                function case_with_sides_case_fn() {
                     
 
-                // creating part 0 of case switchplate
-                let switchplate__part_0 = case_outline_left_extrude_1_2_outline_fn();
+                // creating part 0 of case case_with_sides
+                let case_with_sides__part_0 = full_left_extrude_2_outline_fn();
 
                 // make sure that rotations are relative
-                let switchplate__part_0_bounds = switchplate__part_0.getBounds();
-                let switchplate__part_0_x = switchplate__part_0_bounds[0].x + (switchplate__part_0_bounds[1].x - switchplate__part_0_bounds[0].x) / 2
-                let switchplate__part_0_y = switchplate__part_0_bounds[0].y + (switchplate__part_0_bounds[1].y - switchplate__part_0_bounds[0].y) / 2
-                switchplate__part_0 = translate([-switchplate__part_0_x, -switchplate__part_0_y, 0], switchplate__part_0);
-                switchplate__part_0 = rotate([0,0,0], switchplate__part_0);
-                switchplate__part_0 = translate([switchplate__part_0_x, switchplate__part_0_y, 0], switchplate__part_0);
+                let case_with_sides__part_0_bounds = case_with_sides__part_0.getBounds();
+                let case_with_sides__part_0_x = case_with_sides__part_0_bounds[0].x + (case_with_sides__part_0_bounds[1].x - case_with_sides__part_0_bounds[0].x) / 2
+                let case_with_sides__part_0_y = case_with_sides__part_0_bounds[0].y + (case_with_sides__part_0_bounds[1].y - case_with_sides__part_0_bounds[0].y) / 2
+                case_with_sides__part_0 = translate([-case_with_sides__part_0_x, -case_with_sides__part_0_y, 0], case_with_sides__part_0);
+                case_with_sides__part_0 = rotate([0,0,0], case_with_sides__part_0);
+                case_with_sides__part_0 = translate([case_with_sides__part_0_x, case_with_sides__part_0_y, 0], case_with_sides__part_0);
 
-                switchplate__part_0 = translate([0,0,0], switchplate__part_0);
-                let result = switchplate__part_0;
+                case_with_sides__part_0 = translate([0,0,0], case_with_sides__part_0);
+                let result = case_with_sides__part_0;
+                
+            
+
+                // creating part 1 of case case_with_sides
+                let case_with_sides__part_1 = case_outline_left_extrude_1_2_outline_fn();
+
+                // make sure that rotations are relative
+                let case_with_sides__part_1_bounds = case_with_sides__part_1.getBounds();
+                let case_with_sides__part_1_x = case_with_sides__part_1_bounds[0].x + (case_with_sides__part_1_bounds[1].x - case_with_sides__part_1_bounds[0].x) / 2
+                let case_with_sides__part_1_y = case_with_sides__part_1_bounds[0].y + (case_with_sides__part_1_bounds[1].y - case_with_sides__part_1_bounds[0].y) / 2
+                case_with_sides__part_1 = translate([-case_with_sides__part_1_x, -case_with_sides__part_1_y, 0], case_with_sides__part_1);
+                case_with_sides__part_1 = rotate([0,0,0], case_with_sides__part_1);
+                case_with_sides__part_1 = translate([case_with_sides__part_1_x, case_with_sides__part_1_y, 0], case_with_sides__part_1);
+
+                case_with_sides__part_1 = translate([0,0,0], case_with_sides__part_1);
+                result = result.subtract(case_with_sides__part_1);
                 
             
                     return result;
@@ -70,7 +92,7 @@ function case_outline_left_extrude_1_2_outline_fn(){
             
         
             function main() {
-                return switchplate_case_fn();
+                return case_with_sides_case_fn();
             }
 
         

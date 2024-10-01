@@ -143,37 +143,94 @@ outlines:
   xl_board_left:
     - where: /^matrix_|^thumbfan_/
       what: rectangle
-      size: [cx + 8.5, cy + 9]
-      fillet: 3
+      size: [cx + 8, cy + 8.5]
+    - what: polygon # thumb key correction
+      points:
+        - ref: matrix_index_bottom # tl
+          shift: [-10.25, 0]
+        - ref: matrix_inner_bottom # tr
+          shift: [12.3, -9]
+        - ref: thumbfan_home_thumb # mrl
+          shift: [13.3, 12.4]
+        - ref: thumbfan_far_thumb # mrr
+          shift: [-5, 11]
+        - ref: thumbfan_far_thumb # brr
+          shift: [0, -9.6]
+        - ref: thumbfan_home_thumb # brl
+          shift: [10, -9.7]
+        - ref: thumbfan_near_thumb # blr
+          shift: [10, -9.7]
+        - ref: thumbfan_near_thumb # bll
+          shift: [-5.2, -9.7]
+    - what: polygon # battery case correction
+      points:
+        - ref: matrix_middle_bottom # tl
+          shift: [1, 0]
+        - ref: matrix_middle_bottom # bl
+          shift: [1, -45]
+        - ref: matrix_middle_bottom # br
+          shift: [40, -45]
+        - ref: matrix_middle_bottom # tr
+          shift: [40, 0]
+      operation: add
+      fillet: 2
 
   xl_board_right:
     - where: /^mirror_matrix_|^mirror_thumbfan_/
       what: rectangle
-      size: [cx + 8.5, cy + 9]
-      fillet: 3
+      size: [cx + 8, cy + 8.5]
+    - what: polygon # thumb key correction
+      points:
+        - ref: mirror_matrix_index_bottom # tl
+          shift: [-10.25, 0]
+        - ref: mirror_matrix_inner_bottom # tr
+          shift: [12.3, -9]
+        - ref: mirror_thumbfan_home_thumb # mrl
+          shift: [13.3, 12.4]
+        - ref: mirror_thumbfan_far_thumb # mrr
+          shift: [-5, 11]
+        - ref: mirror_thumbfan_far_thumb # brr
+          shift: [0, -9.6]
+        - ref: mirror_thumbfan_home_thumb # brl
+          shift: [10, -9.7]
+        - ref: mirror_thumbfan_near_thumb # blr
+          shift: [10, -9.7]
+        - ref: mirror_thumbfan_near_thumb # bll
+          shift: [-5.2, -9.7]
+    - what: polygon # battery case correction
+      points:
+        - ref: mirror_matrix_middle_bottom # tl
+          shift: [1, 0]
+        - ref: mirror_matrix_middle_bottom # bl
+          shift: [1, -45]
+        - ref: mirror_matrix_middle_bottom # br
+          shift: [40, -45]
+        - ref: mirror_matrix_middle_bottom # tr
+          shift: [40, 0]
+      operation: add
+      fillet: 2
 
   key_cut_left:
     - where: /^matrix_|^thumbfan_/
       what: rectangle
       size: [14, 14]
-      fillet: 1
+      fillet: 0
 
   key_cut_right:
     - where: /^mirror_matrix_|^mirror_thumbfan_/
       what: rectangle
       size: [14, 14]
-      fillet: 1
+      fillet: 0
 
   case_outline_left:
     - name: xl_board_left
-    - operation: subtract
+    - operation: stack
       name: key_cut_left
 
   case_outline_right:
     - name: xl_board_right
     - operation: subtract
       name: key_cut_right
-
 cases:
   switchplate:
     - what: outline

@@ -165,9 +165,9 @@ outlines:
     - what: polygon # battery case correction
       points:
         - ref: matrix_middle_bottom # tl
-          shift: [1, 0]
+          shift: [-1, 0]
         - ref: matrix_middle_bottom # bl
-          shift: [1, -45]
+          shift: [-1, -45]
         - ref: matrix_middle_bottom # br
           shift: [40, -45]
         - ref: matrix_middle_bottom # tr
@@ -200,9 +200,9 @@ outlines:
     - what: polygon # battery case correction
       points:
         - ref: mirror_matrix_middle_bottom # tl
-          shift: [1, 0]
+          shift: [-1, 0]
         - ref: mirror_matrix_middle_bottom # bl
-          shift: [1, -45]
+          shift: [-1, -45]
         - ref: mirror_matrix_middle_bottom # br
           shift: [40, -45]
         - ref: mirror_matrix_middle_bottom # tr
@@ -231,6 +231,7 @@ outlines:
     - name: xl_board_right
     - operation: subtract
       name: key_cut_right
+
 cases:
   switchplate:
     - what: outline

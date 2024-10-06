@@ -173,7 +173,7 @@ outlines:
         - ref: matrix_middle_bottom # tr
           shift: [40, 0]
       operation: add
-      fillet: 2
+      fillet: 0
 
   xl_board_right:
     - where: /^mirror_matrix_|^mirror_thumbfan_/
@@ -208,7 +208,7 @@ outlines:
         - ref: mirror_matrix_middle_bottom # tr
           shift: [40, 0]
       operation: add
-      fillet: 2
+      fillet: 0
 
   key_cut_left:
     - where: /^matrix_|^thumbfan_/

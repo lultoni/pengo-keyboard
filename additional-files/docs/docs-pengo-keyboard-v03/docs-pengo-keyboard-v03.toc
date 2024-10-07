@@ -1,16 +1,18 @@
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
-\contentsline {section}{\numberline {2}Goals and Specifications for the Project}{3}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Important Notice for using this as a Guide}{3}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}What are my Goals and Specifications?}{3}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}List of all the Goals}{3}{subsubsection.2.2.1}%
-\contentsline {section}{\numberline {3}Designing the Keyboard Layout}{4}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Getting the Layout Right and Personalized}{4}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Ergogen – The Software Used to Create the Layout}{4}{subsection.3.2}%
-\contentsline {section}{\numberline {4}Choosing the Microcontroller}{4}{section.4}%
-\contentsline {subsection}{\numberline {4.1}What is a Microcontroller?}{4}{subsection.4.1}%
-\contentsline {section}{\numberline {5}The PCB Plate and Routing}{4}{section.5}%
-\contentsline {section}{\numberline {6}Switches and Keycaps}{4}{section.6}%
-\contentsline {section}{\numberline {7}Soldering and Assembly}{5}{section.7}%
-\contentsline {section}{\numberline {8}Firmware and Keymaps}{5}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Creating the Keymap for Windows and Mac}{5}{subsection.8.1}%
-\contentsline {section}{\numberline {9}Conclusion}{5}{section.9}%
+\contentsline {section}{\numberline {2}Goals and Specifications for the Project}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Important Notice for using this as a Guide}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}What are my Goals and Specifications?}{4}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}List of all the Goals}{4}{subsubsection.2.2.1}%
+\contentsline {section}{\numberline {3}Designing the Keyboard Layout}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Paper Prototype that is personalized}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Ergogen - The Software Used to Create the Layout}{6}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}A Little Introduction to Ergogen}{6}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}How to Describe the Layout to Look Like We Want It To}{6}{subsubsection.3.2.2}%
+\contentsline {section}{\numberline {4}Choosing the Microcontroller}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}What is a Microcontroller?}{7}{subsection.4.1}%
+\contentsline {section}{\numberline {5}The PCB Plate and Routing}{8}{section.5}%
+\contentsline {section}{\numberline {6}Switches and Keycaps}{8}{section.6}%
+\contentsline {section}{\numberline {7}Soldering and Assembly}{8}{section.7}%
+\contentsline {section}{\numberline {8}Firmware and Keymaps}{8}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Creating the Keymap for Windows and Mac}{8}{subsection.8.1}%
+\contentsline {section}{\numberline {9}Conclusion}{8}{section.9}%

@@ -6,7 +6,6 @@
 
 \title{Creating a Complete Custom Keyboard from Scratch}
 \author{Elias Glauert}
-\date{25 September 2024}
 
 \begin{document}
 
@@ -20,20 +19,32 @@
 
 \section{Introduction}
 
-This paper is about my journey of creating a custom-made keyboard from scratch. It started after I watched a video by Christian Selig\footnote{\url{https://www.youtube.com/watch?v=7UXsD7nSfDY}}, where he created one of these custom boards. Inspired by him, I embarked on this project. Custom keyboards can be costly, often reaching hundreds of euros or dollars, so bear this in mind if you wish to follow the same path.
+This paper documents my journey of creating the Pengo-keyboard, a custom-made keyboard from scratch, inspired by a video made by Christian Selig\footnote{\url{https://www.youtube.com/watch?v=7UXsD7nSfDY} - The video gives a good overview of the tasks that this project includes.}. Watching Selig's video, where he built a custom keyboard, sparked my interest and guided me to embark on a similar project. I highly recommend viewing his video and engaging with his content, as it provides a comprehensive overview of the scope and challenges involved, which can take several weeks to complete.
+
+Custom keyboards can be expensive, particularly the high-end or next-generation models, so it is important to address the cost early on. Creating a keyboard like this typically requires an investment of a few hundred euros. If this is beyond your budget, you might want to reconsider following along this path.
+
+For those familiar with custom keyboards, terms such as switches, keycaps, and modifications will be well-known. Next-generation boards like the Corne or uniquely sized keyboards like the 40\% are related to the Pengo-keyboard but will not be covered in detail in this paper. Inspired by the Corne layout, I found the standard key layout didn't quite suit my hands, which led me to design and build a keyboard tailored to my specific ergonomic needs.
+
+The purpose of this paper is to document my journey and record the insights I gathered throughout the process. As a first-timer in such a project, considerable effort went into researching, designing, and building the keyboard. This paper can be read as a guide, with the content section providing an overview to help navigate through the document and focus on the parts most relevant to you.
+
+Feel free to share this work, build upon it, and spread the knowledge about next-generation keyboards. All I ask is that you credit my contributions, just as I have credited Selig, as much of what you will read builds upon his research.
+
+Please note that, as a student living in Germany, some information may not precisely fit your needs or could be slightly biased. This is my first time undertaking a project of this nature, so some details may not be perfect. Use this article as a starting point for your own journey into custom keyboard creation.
+
+\pagebreak
 
 \section{Goals and Specifications for the Project}
 
 \subsection{Important Notice for using this as a Guide}
-The objective of creating a custom keyboard is to have a personalized and enjoyable experience. While this document will detail my choices, they are based on my needs and preferences and may not suit others. Please use this guide as a reference, but feel free to adapt or improve upon my design.
+The objective of creating a custom keyboard is to have a personalized and enjoyable experience. While this document will detail my choices, they are based on my needs and preferences and may not suit everyone. Please use this paper as a reference and not a perfect creation, but feel free to adapt or improve upon my design.
 
 \subsection{What are my Goals and Specifications?}
-My main goal was to create a keyboard that made typing easier and more efficient. After learning to touch type on a Mac keyboard, I found that it was unoptimized for my needs. Issues such as excessive movement when pressing backspace, underutilized thumbs, and fingers overlapping in function inspired this project. 
+My main goal was to create a keyboard that made typing easier and more efficient. After learning to touch type on a Mac keyboard, I found that it was unoptimized for my hands. Issues such as excessive movement when pressing backspace, underutilized thumbs, and fingers pressing keys designated for other fingers in when typing inspired this project. 
 
 \subsubsection{List of all the Goals}
 \begin{enumerate}
     \item The board fits my hands so that no hand movement is necessary while typing.
-    \item Layout toggles between Windows and MacOS.
+    \item Keymap based on and optimized for Windows.
     \item The keyboard is split into two parts for ergonomic adjustment.
     \item The connection is wireless (Bluetooth).
     \item No backlighting to save battery life.
@@ -41,13 +52,88 @@ My main goal was to create a keyboard that made typing easier and more efficient
     \item The design is simple, sleek, and fits my room's style and color scheme.
 \end{enumerate}
 
+\pagebreak
+
 \section{Designing the Keyboard Layout}
 
-\subsection{Getting the Layout Right and Personalized}
-To achieve ergonomic goals, I placed my fingers on a 5mm checkered sheet of paper and drew a 2x2 square around each finger. This served as the base for key placement. Adjustments were made based on finger length and movement, inspired by the Corne layout.
+\subsection{Paper Prototype that is personalized}
 
-\subsection{Ergogen – The Software Used to Create the Layout}
-Ergogen is a free, open-source tool for generating keyboard layout files. By describing the key positions, Ergogen creates a customizable layout. Detailed documentation and tutorials can be found online\footnote{\url{https://ergogen.xyz}}.
+Achieving an ergonomic and personalized keyboard layout involves several key considerations:
+
+\begin{enumerate}
+    \item \textbf{Ortolinear Layout:} Traditional keyboards have staggered rows where keys are not perfectly aligned beneath each other. Since fingers are best suited for vertical movement rather than lateral, I opted for an ortholinear layout where all keys are aligned in straight columns.
+    \item \textbf{Column Staggered Layout:} This design adjusts key column positions based on the varying lengths of fingers to minimize strain and travel distance.
+    \item \textbf{Fewer Keys:} Reducing the number of keys minimizes hand movement as different layers are used\footnote{A layer describes the outcome of a keypress. For example, the base layer outputs a "c" when the C-key is pressed, while a different layer (like the shift layer) outputs a "C".}. This also increases thumb functionality.
+\end{enumerate}
+
+To implement these ergonomic goals, I began by placing my fingers on a 5mm checkered sheet of paper in the desired typing position. I then drew a 2x2 square around each finger to represent the approximate size of a keycap\footnote{The actual size of a keycap is around 18mm x 18mm, and with the padding, it measures approximately 19.05mm x 19.05mm. This is similar to the 20mm x 20mm dimension of a 2x2 square on the checkered sheet.}. These positions formed the base for the keys in the home row.
+
+Based on the movement range and length of each finger, I adjusted the key positions, ensuring comfort and minimizing strain. Inspired by the Corne layout, I added the remaining keys, but deliberately excluded an outer bottom key for the pinkie finger due to its limited range of motion.
+
+This process was applied not only to the left-hand side (often referred to as the center side\footnote{The center side is responsible for sending signals from both itself and the peripheral side to the computer. Thus, it generally consumes more energy and must always be connected for the keyboard to function.}) but also to the right-hand side (known as the peripheral side\footnote{The peripheral side primarily sends its inputs to the center side, consuming less energy and does not need to be used continuously.}). These terms are commonly used in the split keyboard community and will be used throughout this paper.
+
+\subsection{Ergogen - The Software Used to Create the Layout}
+
+Ergogen is a free, open-source tool designed to generate files for custom keyboard building by describing the key positions. It simplifies the process of creating a keyboard layout, transforming initial sketches from paper into a usable digital format. Detailed documentation and tutorials can be found online\footnote{\url{https://ergogen.xyz}}. The interface at \url{https://ergogen.ceoloide.com} offers additional user-friendly features.
+
+\subsubsection{A Little Introduction to Ergogen}
+
+To begin with Ergogen, the first step involves defining the rows and columns for the final product. Ergogen operates on a matrix system, allowing for precise control over key placements. This section will outline the basic steps to get started with designing your keyboard layout.
+
+You can do much more than just create the layout in Ergogen, but this paper will focus on the essential steps. For comprehensive tutorials, please refer to the provided documentation or available YouTube videos.
+
+\subsubsection{How to Describe the Layout to Look Like We Want It To}
+
+The key to using Ergogen effectively starts with correctly defining rows and columns. In my project, I defined my columns as: outer, pinky, ring, middle, index, and inner, and my rows as: bottom, home, and top. Below is a simplified breakdown of the steps:
+
+\begin{itemize}
+    \item \textbf{Points:} Individual keys.
+    \item \textbf{Zones:} Collections of key-grids, such as the matrix zone and thumb zone.
+    \item \textbf{Matrix:} Defines the main layout structure.
+\end{itemize}
+
+For example:
+\begin{verbatim}
+matrix:
+  columns:
+    outer:
+    pinky:
+    ring:
+    middle:
+    index:
+    inner:
+  rows:
+    bottom:
+    home:
+    top:
+    
+thumbfan:
+  anchor: # Defines the starting point for key positioning
+  ref: matrix_inner_bottom # Sets the reference point
+  shift: [-24, -20] # Moves the reference point
+  columns:
+    near:
+    home:
+    far:
+  rows:
+    thumb:
+\end{verbatim}
+
+To implement staggered columns and thumb rotations:
+\begin{verbatim}
+middle:
+  key:
+    stagger: 4 # Moves the column vertically
+home:
+  key:
+    spread: 21.25 # Distance between columns
+    splay: -12 # Rotates keys based on origin
+    origin: [-11.75, -9] # Base positions for keys
+\end{verbatim}
+
+This is a simplified example to help you get started. For the complete layout files, please refer to my GitHub repository\footnote{\url{https://github.com/lultoni/pengo-keyboard}}.
+
+Remember to consult the Ergogen documentation and community resources for more advanced features and troubleshooting tips.
 
 \section{Choosing the Microcontroller}
 \subsection{What is a Microcontroller?}

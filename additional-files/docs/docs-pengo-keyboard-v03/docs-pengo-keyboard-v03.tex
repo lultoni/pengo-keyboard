@@ -1,0 +1,72 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{Creating a Complete Custom Keyboard from Scratch}
+\author{Elias Glauert}
+\date{25 September 2024}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\tableofcontents
+
+\pagebreak
+
+\section{Introduction}
+
+This paper is about my journey of creating a custom-made keyboard from scratch. It started after I watched a video by Christian Selig\footnote{\url{https://www.youtube.com/watch?v=7UXsD7nSfDY}}, where he created one of these custom boards. Inspired by him, I embarked on this project. Custom keyboards can be costly, often reaching hundreds of euros or dollars, so bear this in mind if you wish to follow the same path.
+
+\section{Goals and Specifications for the Project}
+
+\subsection{Important Notice for using this as a Guide}
+The objective of creating a custom keyboard is to have a personalized and enjoyable experience. While this document will detail my choices, they are based on my needs and preferences and may not suit others. Please use this guide as a reference, but feel free to adapt or improve upon my design.
+
+\subsection{What are my Goals and Specifications?}
+My main goal was to create a keyboard that made typing easier and more efficient. After learning to touch type on a Mac keyboard, I found that it was unoptimized for my needs. Issues such as excessive movement when pressing backspace, underutilized thumbs, and fingers overlapping in function inspired this project. 
+
+\subsubsection{List of all the Goals}
+\begin{enumerate}
+    \item The board fits my hands so that no hand movement is necessary while typing.
+    \item Layout toggles between Windows and MacOS.
+    \item The keyboard is split into two parts for ergonomic adjustment.
+    \item The connection is wireless (Bluetooth).
+    \item No backlighting to save battery life.
+    \item The switches are silent to avoid disturbing others.
+    \item The design is simple, sleek, and fits my room's style and color scheme.
+\end{enumerate}
+
+\section{Designing the Keyboard Layout}
+
+\subsection{Getting the Layout Right and Personalized}
+To achieve ergonomic goals, I placed my fingers on a 5mm checkered sheet of paper and drew a 2x2 square around each finger. This served as the base for key placement. Adjustments were made based on finger length and movement, inspired by the Corne layout.
+
+\subsection{Ergogen – The Software Used to Create the Layout}
+Ergogen is a free, open-source tool for generating keyboard layout files. By describing the key positions, Ergogen creates a customizable layout. Detailed documentation and tutorials can be found online\footnote{\url{https://ergogen.xyz}}.
+
+\section{Choosing the Microcontroller}
+\subsection{What is a Microcontroller?}
+A microcontroller is like the brain of the keyboard, converting key presses into signals that the computer understands. For this project, I chose the \texttt{nice!nano}\footnote{\url{https://nicekeyboards.com/nice-nano}} microcontroller because of its Bluetooth capabilities, which align with the project goals.
+
+\section{The PCB Plate and Routing}
+The PCB plate connects all the keyboard components like the controller, battery, switches, and more. I used KiCad for routing the electrical signals.
+
+\section{Switches and Keycaps}
+For switches, I chose the Gazzew Boba U4 Silents\footnote{\url{https://thocstock.com/switches/gazzew-boba-u4-silents}}, which are tactile and designed to be quiet. For keycaps, I opted for YMDK DSA Profile blank caps.
+
+\section{Soldering and Assembly}
+The PCB, components, and case are soldered and assembled according to the custom design. Lead-free solder was used for safety, and proper ventilation is essential during the process.
+
+\section{Firmware and Keymaps}
+\subsection{Creating the Keymap for Windows and Mac}
+I designed the keymap using \texttt{ZMK}\footnote{\url{https://zmk.dev}} firmware to switch between Windows and MacOS layouts. The firmware was loaded onto the controller, and Bluetooth was used for connection.
+
+\section{Conclusion}
+This document outlines my process for creating a custom keyboard. The steps and resources are provided as a guide to help others with similar projects. For detailed code and files, visit my GitHub repository\footnote{\url{https://github.com/lultoni/pengo-keyboard}}.
+
+\end{document}

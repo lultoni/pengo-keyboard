@@ -143,7 +143,7 @@ outlines:
   xl_board_left:
     - where: /^matrix_|^thumbfan_/
       what: rectangle
-      size: [cx + 8, cy + 8.5]
+      size: [cx + 10, cy + 10.5]
     - what: polygon # thumb key correction
       points:
         - ref: matrix_index_bottom # tl
@@ -173,12 +173,12 @@ outlines:
         - ref: matrix_middle_bottom # tr
           shift: [40, 0]
       operation: add
-      fillet: 0
+      fillet: 3
 
   xl_board_right:
     - where: /^mirror_matrix_|^mirror_thumbfan_/
       what: rectangle
-      size: [cx + 8, cy + 8.5]
+      size: [cx + 10, cy + 10.5]
     - what: polygon # thumb key correction
       points:
         - ref: mirror_matrix_index_bottom # tl
@@ -208,7 +208,7 @@ outlines:
         - ref: mirror_matrix_middle_bottom # tr
           shift: [40, 0]
       operation: add
-      fillet: 0
+      fillet: 3
 
   key_cut_left:
     - where: /^matrix_|^thumbfan_/
@@ -222,40 +222,36 @@ outlines:
       size: [14, 14]
       fillet: 0
 
-  case_outline_left:
+  plate_outline_left:
     - name: xl_board_left
-    - operation: stack
+    - operation: subtract
       name: key_cut_left
 
-  case_outline_right:
+  plate_outline_right:
     - name: xl_board_right
     - operation: subtract
       name: key_cut_right
 
 cases:
-  switchplate:
+  plate_case_left:
     - what: outline
-      name: case_outline_left
+      name: plate_outline_left
       extrude: 1.2
 
-  bottom:
+  bottom_case_left:
+    - what: outline
+      name: xl_board_right
+      extrude: 1.2
+
+  plate_case_right:
+    - what: outline
+      name: plate_outline_right
+      extrude: 1.2
+
+  bottom_case_right:
     - what: outline
       name: xl_board_left
       extrude: 1.2
-
-  case_with_sides:
-    - what: outline
-      name: full_left
-      extrude: 2
-    - what: outline
-      name: case_outline_left
-      extrude: 1.2
-      operation: subtract
-
-  backside:
-    - what: outline
-      name: full_left
-      extrude: 2
 
 pcbs:
   left:
